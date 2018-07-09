@@ -12,7 +12,7 @@ class ViewComponent extends React.Component {
   render() {
     return (
       <div>
-        <Paper>{this.props.value.str}</Paper>
+        <Paper>{this.props.value}</Paper>
       </div>
     );
   }
