@@ -1,34 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import InputArea from "./InputValue";
-import ViewLabel from "./ViewCompornent";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import DataStore from './mobx_test_store'
+import Input from './mobx_test_input'
+import View from './mobx_test_view'
 
-// var data = { str: 12345 };
+var state = {str: 12345};
+const myStore = new DataStore();
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      str: "hello world"
-    };
-
-    this.valueChanged = this.valueChanged.bind(this);
-  }
-
-  valueChanged(resStr) {
-    this.setState({
-      str: resStr
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <ViewLabel value={this.state.str} />
-        <InputArea valueChanged={this.valueChanged} />
-      </div>
-    );
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <div>
+    <Input store={myStore}/>
+    <View store={myStore}/>
+  </div>
+  ,
+  document.getElementById('app')
+);
